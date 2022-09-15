@@ -1,5 +1,5 @@
-import LogoLink from '../../components/atoms/link/logoLink';
-import Nav from '../../components/mollecules/signInNav';
+import LogoLink from '../../atoms/link/logoLink';
+import Nav from '../signInNav';
 import './index.css';
 
 export const MainNav = () => {

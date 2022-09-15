@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import './index.css';
 
-export const CheckBox = ({ label, id }) => {
+export const CheckBox = ({ label, id, name }) => {
     return (
         <div className="input-remember">
-            <input type="checkbox" id={id} />
-            <label for={id}>{label}</label>
+            <input type="checkbox" id={id} name={name} />
+            <label htmlFor={id}>{label}</label>
         </div>
     );
 };

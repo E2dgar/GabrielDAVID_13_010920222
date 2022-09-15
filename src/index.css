@@ -1,7 +1,7 @@
 :root {
     --color-primary: #00bc77;
     --color-secondary: #2c3e50;
-    --color-background: #12002b
+    --color-background: #12002b;
     --color-black: #222;
     --color-white: #fff;
     --color-grey: #ccc;
@@ -47,4 +47,8 @@ body {
     position: absolute;
     width: 1px;
     white-space: nowrap;
+}
+
+main {
+    flex: 1;
 }

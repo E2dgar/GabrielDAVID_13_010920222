@@ -14,5 +14,3 @@ export const HeroContent = () => {
         </Panel>
     );
 };
-
-export default HeroContent;

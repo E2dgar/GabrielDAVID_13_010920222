@@ -2,7 +2,7 @@ import LogoLink from '../../components/atoms/link/logoLink';
 import Footer from '../../components/mollecules/footer';
 import Hero from '../../components/mollecules/hero';
 import SignInNav from '../../components/mollecules/signInNav';
-import Features from '../../components/organisms/featuresSection';
+import Features from '../../components/mollecules/featuresSection';
 import './index.css';
 
 const Home = () => {

@@ -1,4 +1,4 @@
-import HeroContent from '../heroContent';
+import { HeroContent } from '../heroContent';
 import './index.css';
 
 export const Hero = () => {

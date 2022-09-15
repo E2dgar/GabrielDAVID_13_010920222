@@ -1,13 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import Button from './components/atoms/button';
-import Features from './components/organisms/featuresSection';
-import Home from './pages/home';
+import Login from './pages/login';
 
 const App = () => {
     return (
         <div className="App">
-            <Home />
+            <Login />
         </div>
     );
 };
