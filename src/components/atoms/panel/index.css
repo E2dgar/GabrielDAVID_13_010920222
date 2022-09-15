@@ -1,0 +1,30 @@
+.panel {
+    background: var(--color-white);
+}
+
+.panel.sign-in-content {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+.panel.hero-content {
+    position: relative;
+    top: 2rem;
+    width: calc(200px + 4rem);
+    background: white;
+    padding: 2rem;
+    text-align: left;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 920px) {
+    .panel.hero-content {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        width: calc(300px + 4rem);
+        margin: 2rem;
+    }
+}

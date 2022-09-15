@@ -1,0 +1,6 @@
+.feature-icon {
+    width: 152px;
+    border: 10px solid var(--color-primary);
+    border-radius: 50%;
+    padding: 1rem;
+}

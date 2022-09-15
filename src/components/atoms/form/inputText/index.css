@@ -1,0 +1,14 @@
+.input-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.input-text-wrapper label {
+    font-weight: bold;
+}
+
+.input-text-wrapper input {
+    padding: 5px;
+}
