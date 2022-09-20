@@ -2,7 +2,7 @@ import './index.css';
 
 export const LogoLink = () => {
     return (
-        <a className="main-nav-logo" href="#">
+        <a className="main-nav-logo" href="/">
             <img
                 className="main-nav-logo-image"
                 src="assets/img/argentBankLogo.png"

@@ -6,12 +6,15 @@ export default {
     component: H3
 };
 
-const Template = (args) => <H3 {...args} />;
+const Template = (args) => <H3 {...args}>You are our #1 priority</H3>;
 
 export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
     primary: true,
-    content: 'You are our #1 priority',
-    className: 'fetaure-item-title'
+    className: 'feature-item-title'
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+    className: 'account-title'
 };

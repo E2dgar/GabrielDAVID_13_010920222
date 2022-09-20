@@ -1,5 +1,5 @@
 import './index.css';
-import FeatureItem from '../../mollecules/featureItem';
+import FeatureItem from '../featureItem';
 
 const Features = () => {
     const staticData = [

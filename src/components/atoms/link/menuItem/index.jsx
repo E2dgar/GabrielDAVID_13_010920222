@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import './index.css';
 
-export const MenuItem = ({ label, faIcon }) => {
+export const MenuItem = ({ label, faIcon, href }) => {
     return (
-        <a className="main-nav-item" href="#">
+        <a className="main-nav-item" href={href}>
             {faIcon}
             {label}
         </a>
@@ -12,7 +12,8 @@ export const MenuItem = ({ label, faIcon }) => {
 
 MenuItem.propTypes = {
     label: PropTypes.string.isRequired,
-    faIcon: PropTypes.element
+    faIcon: PropTypes.element,
+    href: PropTypes.string.isRequired
 };
 
 export default MenuItem;
