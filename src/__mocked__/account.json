@@ -1,0 +1,42 @@
+[
+    {
+        "clientId": "tony@stark.com",
+        "accounts": [
+            {
+                "accountId": "x8349",
+                "accountType": "checkingAccount",
+                "availableBalance": 2082.79,
+                "creditCurrentBalance": 184.3,
+                "transactions": [
+                    {
+                        "id": "0123T",
+                        "date": "20/01/22",
+                        "description": "GSB",
+                        "amount": 5,
+                        "type": "check"
+                    },
+                    {
+                        "id": "0123TC",
+                        "date": "20/01/22",
+                        "description": "GSB",
+                        "amount": 50,
+                        "type": "credit"
+                    }
+                ]
+            },
+            {
+                "accountId": "x6712",
+                "accountType": "savingsAccount",
+                "availableBalance": 10928.42,
+                "transactions": [
+                    {
+                        "id": "0123S",
+                        "date": "20/01/22",
+                        "description": "GSB",
+                        "amount": 50
+                    }
+                ]
+            }
+        ]
+    }
+]

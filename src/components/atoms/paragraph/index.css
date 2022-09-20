@@ -14,12 +14,12 @@
     font-weight: bold;
 }
 
-.paragraph.account-title,
-.pargaraph.account-amount-description {
+.account-title,
+.paragraph.account-amount-description {
     font-size: 1rem;
 }
 
-.pargaraph.account-amount-description {
+.account-amount-description {
     margin: 0;
 }
 
