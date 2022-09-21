@@ -5,8 +5,16 @@ import Panel from '../../atoms/panel';
 import Button from '../../atoms/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 export const Form = () => {
+    const navigate = useNavigate();
+
+    const tempNav = (e) => {
+        e.preventDefault();
+        navigate('/account');
+    };
+
     return (
         <Panel className="sign-in-content">
             <FontAwesomeIcon icon={faUserCircle} size="lg" />
@@ -24,7 +32,11 @@ export const Form = () => {
                     label="Remember me"
                     name="remember-me"
                 />
-                <Button className="large-secondary" label="Sign in" />
+                <Button
+                    className="large-secondary-button"
+                    label="Sign in"
+                    onClick={(e) => tempNav(e)}
+                />
             </form>
         </Panel>
     );

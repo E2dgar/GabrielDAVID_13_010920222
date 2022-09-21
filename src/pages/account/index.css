@@ -1,0 +1,9 @@
+.bg-dark {
+    background-color: var(--color-background);
+    flex: 1;
+}
+
+.user-header {
+    color: var(--color-white);
+    margin-bottom: 2rem;
+}

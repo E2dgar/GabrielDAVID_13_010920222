@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
 import './index.css';
 
-export const Button = ({ label, className }) => {
-    return <button className={`button ${className}`}>{label}</button>;
+export const Button = ({ label, className, onClick }) => {
+    return (
+        <button className={`button ${className}`} onClick={onClick}>
+            {label}
+        </button>
+    );
 };
 
 Button.propTypes = {

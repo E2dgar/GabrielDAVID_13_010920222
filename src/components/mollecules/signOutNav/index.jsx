@@ -10,10 +10,12 @@ export const SignOutNav = () => {
             <MenuItem
                 label=" User"
                 faIcon={<FontAwesomeIcon icon={faUserCircle} />}
+                href="#"
             />
             <MenuItem
                 label=" Sign out"
                 faIcon={<FontAwesomeIcon icon={faSignOut} />}
+                href="#"
             />
         </div>
     );
