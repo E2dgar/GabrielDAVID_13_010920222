@@ -5,8 +5,17 @@ import H1 from '../../components/atoms/title/h1';
 import Button from '../../components/atoms/button';
 import Card from '../../components/mollecules/card';
 import './index.css';
+import { getProfil } from '../../features/auth/loginSlice';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Account = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProfil());
+    }, [dispatch]);
     return (
         <>
             <nav className="main-nav">

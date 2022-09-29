@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import './index.css';
 
-export const InputText = ({ label, type, name, id }) => {
+export const InputText = ({ label, type, name, id, onChange }) => {
     return (
         <div className="input-text-wrapper">
             <label htmlFor={name}>{label}</label>
-            <input id={id} type={type ?? 'text'} name={name} />
+            <input
+                id={id}
+                type={type ?? 'text'}
+                name={name}
+                onChange={onChange}
+            />
         </div>
     );
 };

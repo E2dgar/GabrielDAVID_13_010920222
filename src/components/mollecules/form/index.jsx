@@ -6,37 +6,90 @@ import Button from '../../atoms/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../../features/auth/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { ROUTES } from '../../../constants/api';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { logTest } from '../../../features/auth/loginSlice';
 
 export const Form = () => {
+    const [mail, setMail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [userIsConnected, setUserIsConnected] = useState(false);
 
-    const tempNav = (e) => {
+    /* const loginStatus = useSelector((state) => state.auth.status);*/
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        navigate('/account');
+
+        dispatch(login({ email: mail, password: password }));
+
+        /**
+         * dispath(login, {mail, password })
+         */
+
+        /* try {
+            const response = await axios.post(ROUTES.LOGIN, {
+                email: mail,
+                password: password
+            });
+            const token = response.data.body.token;
+
+            dispatch(login(JSON.stringify(token)));
+
+            /*TODO passing auth headers wih axios */
+        /* const profil = await fetch(ROUTES.PROFIL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + token
+                }
+            });
+            const data = await profil.json();
+
+            dispatch(
+                getProfil({
+                    firstName: data.body.firstName,
+                    lastName: data.body.lastName
+                })
+            );
+        } catch (error) {
+            console.log(error);
+
+            {loginStatus === 'loading' && <p>Loading</p>}
+
+            
+        }*/
     };
 
     return (
         <Panel className="sign-in-content">
             <FontAwesomeIcon icon={faUserCircle} size="lg" />
+
             <h1>Sign in</h1>
-            <form>
-                <InputText label="Username" name="username" id="username" />
+            <form id="login-form" name="login-form" onSubmit={handleSubmit}>
+                <InputText
+                    label="Mail"
+                    name="mail"
+                    id="mail"
+                    onChange={(e) => setMail(e.target.value)}
+                />
                 <InputText
                     label="Password"
                     name="password"
                     id="password"
                     type="password"
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <CheckBox
                     id="remember-me"
                     label="Remember me"
                     name="remember-me"
                 />
-                <Button
-                    className="large-secondary-button"
-                    label="Sign in"
-                    onClick={(e) => tempNav(e)}
-                />
+                <Button className="large-secondary-button" label="Sign in" />
             </form>
         </Panel>
     );

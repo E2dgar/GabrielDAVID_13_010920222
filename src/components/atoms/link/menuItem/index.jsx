@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './index.css';
 
 export const MenuItem = ({ label, faIcon, href }) => {
     return (
-        <a className="main-nav-item" href={href}>
+        <Link className="main-nav-item" to={href}>
             {faIcon}
             {label}
-        </a>
+        </Link>
     );
 };
 

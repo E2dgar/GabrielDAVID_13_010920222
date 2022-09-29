@@ -1,0 +1,28 @@
+initialState = {
+ 
+  userId: null,
+  accounts: null
+}
+
+account {
+  id
+  userId
+  type
+  balance
+  transactions []
+}
+
+user {
+  firstName
+  lastName
+  mail
+}
+
+actions : type: 'connection'   =>   isUserConnected: true, userId: mail, remmeberMe: true/false,(JWT)     déclenché par submit ok
+          
+          /*type: 'setLocalStorage' => userData  déclencheurs : connection et modif profil*/
+          
+          type: 'getAccounts' => filter account => userId  déclencheur account page load
+          type: 'updateProfil'  => 'setLocalStorage'
+          type: 'disconnect'  => clearLocalStorage
+
