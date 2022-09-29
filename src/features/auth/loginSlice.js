@@ -21,7 +21,12 @@ const loginSlice = createSlice({
         error: null,
         token: null
     },
-    reducers: {},
+    reducers: {
+        rememberMe: (state) => {
+            if (localStorage.getItem('token'))
+                state.token = JSON.parse(localStorage.getItem('token'));
+        }
+    },
     extraReducers(builder) {
         builder
             .addCase(login.pending, (state) => {
@@ -58,6 +63,6 @@ const loginSlice = createSlice({
     }
 });
 
-export const { logTest } = loginSlice.actions;
+export const { rememberMe } = loginSlice.actions;
 
 export default loginSlice.reducer;

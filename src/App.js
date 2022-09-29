@@ -4,7 +4,8 @@ import Home from './pages/home';
 import Account from './pages/account';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
+import { rememberMe } from './features/auth/loginSlice';
 import store from './redux/store';
 import axiosInterceptorHeaders from './services/axios';
 import AuthWrapper from './components/authWrapper';
@@ -13,28 +14,30 @@ import AuthWrapper from './components/authWrapper';
 
 const App = () => {
     axiosInterceptorHeaders();
+    const dispatch = useDispatch();
+    dispatch(rememberMe());
 
     return (
-        <Provider store={store}>
-            <div className="App">
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route element={<AuthWrapper />}>
-                            <Route path="/sign-in" element={<Login />} />
-                        </Route>
-                        <Route
-                            path="/account"
-                            element={
-                                <PrivateRoute>
-                                    <Account />
-                                </PrivateRoute>
-                            }
-                        />
-                    </Routes>
-                </BrowserRouter>
-            </div>
-        </Provider>
+        // <Provider store={store}>
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route element={<AuthWrapper />}>
+                        <Route path="/sign-in" element={<Login />} />
+                    </Route>
+                    <Route
+                        path="/account"
+                        element={
+                            <PrivateRoute>
+                                <Account />
+                            </PrivateRoute>
+                        }
+                    />
+                </Routes>
+            </BrowserRouter>
+        </div>
+        // </Provider>
     );
 };
 
