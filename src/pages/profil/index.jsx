@@ -7,16 +7,23 @@ import Card from '../../components/mollecules/card';
 import './index.css';
 import { getProfil } from '../../features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import EditForm from '../../components/mollecules/forms/editProfil';
 
 const Profil = () => {
     const dispatch = useDispatch();
     const firstName = useSelector((state) => state.user.profil.firstName);
     const lastName = useSelector((state) => state.user.profil.lastName);
 
+    const [isEditing, setIsEditing] = useState(false);
+
     useEffect(() => {
         dispatch(getProfil());
     }, [dispatch]);
+
+    const handleEditClick = () => {
+        setIsEditing(!isEditing);
+    };
 
     return (
         <>
@@ -28,12 +35,23 @@ const Profil = () => {
                 <header className="user-header">
                     <H1 className="white-heading">
                         Welcome back
-                        <div>
-                            {firstName} {lastName}
-                        </div>{' '}
-                        !{' '}
+                        {!isEditing && (
+                            <p className="welcome">
+                                {firstName} {lastName} !
+                            </p>
+                        )}
                     </H1>
-                    <Button className="edit-button" label="Edit Name" />
+                    {isEditing ? (
+                        <EditForm onClick={handleEditClick} />
+                    ) : (
+                        <>
+                            <Button
+                                className="edit-button"
+                                label="Edit Name"
+                                onClick={handleEditClick}
+                            />
+                        </>
+                    )}
                 </header>
 
                 <h2 className="sr-only">Accounts</h2>

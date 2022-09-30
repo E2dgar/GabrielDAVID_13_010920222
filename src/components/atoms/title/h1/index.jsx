@@ -6,7 +6,11 @@ export const H1 = ({ children, className }) => {
 };
 
 H1.propTypes = {
-    children: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.string
+    ]).isRequired,
     className: PropTypes.string
 };
 

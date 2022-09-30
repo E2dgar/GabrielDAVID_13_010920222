@@ -1,0 +1,29 @@
+.edit-form {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.edit-form .wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-form .wrapper input,
+.edit-form .wrapper button {
+    margin: 0 1rem;
+}
+
+@media screen and (max-width: 782px) {
+    .edit-form {
+        width: 80%;
+    }
+
+    .edit-form .input-wrapper {
+        flex-direction: column;
+    }
+
+    .edit-form .input-wrapper input {
+        width: 100%;
+        margin: 0;
+    }
+}

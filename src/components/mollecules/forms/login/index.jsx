@@ -1,17 +1,13 @@
 import './index.css';
-import CheckBox from '../../atoms/form/checkBox';
-import InputText from '../../atoms/form/inputText';
-import Panel from '../../atoms/panel';
-import Button from '../../atoms/button';
+import CheckBox from '../../../atoms/form/checkBox';
+import InputText from '../../../atoms/form/inputText';
+import Panel from '../../../atoms/panel';
+import Button from '../../../atoms/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { login } from '../../../features/auth/loginSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { ROUTES } from '../../../constants/api';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { logTest } from '../../../features/auth/loginSlice';
+import { login } from '../../../../features/auth/loginSlice';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 export const Form = () => {
     const [mail, setMail] = useState('');

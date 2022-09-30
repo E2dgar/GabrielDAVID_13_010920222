@@ -25,6 +25,7 @@ const loginSlice = createSlice({
             localStorage.removeItem('token');
             state.token = null;
             state.status = 'idle';
+            // state.user.profil.firstName = 'delete';
         }
     },
     extraReducers(builder) {

@@ -1,3 +1,8 @@
-.white-heading {
+.white-heading,
+.white-heading p {
     color: var(--color-white);
+}
+
+.welcome {
+    margin: 0;
 }

@@ -27,8 +27,6 @@ const userSlice = createSlice({
                 state.status = 'succeeded';
                 state.profil.firstName = action.payload.body.firstName;
                 state.profil.lastName = action.payload.body.lastName;
-
-                console.log('prfil', action.payload);
             })
             .addCase(getProfil.rejected, (state) => {
                 state.status = 'failed';

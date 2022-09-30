@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Footer from '../../components/mollecules/footer';
-import Form from '../../components/mollecules/form';
+import Form from '../../components/mollecules/forms/login';
 import MainNav from '../../components/mollecules/mainNav';
 import './index.css';
 import { Navigate } from 'react-router-dom';
