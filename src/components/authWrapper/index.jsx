@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 const AuthWrapper = () => {
     return !!useSelector((state) => state.auth.token) ? (
-        <Navigate to="/account" replace />
+        <Navigate to="/profil" replace />
     ) : (
         <Outlet />
     );

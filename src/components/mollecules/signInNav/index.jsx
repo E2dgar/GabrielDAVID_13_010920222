@@ -10,7 +10,7 @@ export const SignInNav = () => {
             <MenuItem
                 label=" Sign in"
                 faIcon={<FontAwesomeIcon icon={faUserCircle} />}
-                href="/sign-in"
+                href="/login"
             />
         </div>
     );

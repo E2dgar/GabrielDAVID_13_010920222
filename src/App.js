@@ -1,43 +1,49 @@
 import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
-import Account from './pages/account';
+import Profil from './pages/profil';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
-import { Provider, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { rememberMe } from './features/auth/loginSlice';
-import store from './redux/store';
-import axiosInterceptorHeaders from './services/axios';
 import AuthWrapper from './components/authWrapper';
+import { useEffect } from 'react';
+import axios from 'axios';
+
+import store from './redux/store';
 
 /*axios.defaults.headers.common['Authorization'] = store.getState().token;*/
 
 const App = () => {
-    axiosInterceptorHeaders();
+    // const token = useSelector((state) => state.auth.token);
+
+    // axios.interceptors.request.use((config) => {
+    //     config.headers['Authorization'] = `Bearer ${token}`;
+    //     return config;
+    // });
+
     const dispatch = useDispatch();
     dispatch(rememberMe());
 
     return (
-        // <Provider store={store}>
         <div className="App">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route element={<AuthWrapper />}>
-                        <Route path="/sign-in" element={<Login />} />
-                    </Route>
+                    {/* <Route element={<AuthWrapper />}> */}
+                    <Route path="/login" element={<Login />} />
+                    {/* </Route> */}
                     <Route
-                        path="/account"
+                        path="/profil"
                         element={
                             <PrivateRoute>
-                                <Account />
+                                <Profil />
                             </PrivateRoute>
                         }
                     />
                 </Routes>
             </BrowserRouter>
         </div>
-        // </Provider>
     );
 };
 

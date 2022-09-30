@@ -1,30 +1,30 @@
-import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ROUTES } from '../../constants/api';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
 
+const initialState = {
+    status: 'idle',
+    error: null,
+    token: null
+};
 export const login = createAsyncThunk('auth/login', async (payload) => {
     console.log('payload', payload);
-    const response = await axios.post(ROUTES.LOGIN, payload);
-    return response.data;
-});
-
-export const getProfil = createAsyncThunk('auth/getProfil', async () => {
-    const response = await axios.post(ROUTES.PROFIL);
+    const response = await axios.post(ROUTES.LOGIN, payload, { timeout: 5000 });
     return response.data;
 });
 
 const loginSlice = createSlice({
     name: 'auth',
-    initialState: {
-        status: 'idle',
-        error: null,
-        token: null
-    },
+    initialState: initialState,
     reducers: {
         rememberMe: (state) => {
             if (localStorage.getItem('token'))
                 state.token = JSON.parse(localStorage.getItem('token'));
+        },
+        logout: (state) => {
+            localStorage.removeItem('token');
+            state.token = null;
+            state.status = 'idle';
         }
     },
     extraReducers(builder) {
@@ -33,36 +33,23 @@ const loginSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.token = action.payload.body.token;
                 localStorage.setItem(
                     'token',
                     JSON.stringify(action.payload.body.token)
                 );
-                /**
-                 * logic pour loaclStorag
-                 * logic pour Header authorization
-                 */
+
+                state.token = action.payload.body.token;
+                state.status = 'succeeded';
 
                 console.log('state siccess', action.payload);
             })
             .addCase(login.rejected, (state, action) => {
                 state.status = 'failed';
                 console.log('error', action.error.message);
-            })
-            .addCase(getProfil.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(getProfil.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                console.log('prfil', action.payload);
-            })
-            .addCase(getProfil.rejected, (state) => {
-                state.status = 'failed';
             });
     }
 });
 
-export const { rememberMe } = loginSlice.actions;
+export const { rememberMe, logout } = loginSlice.actions;
 
 export default loginSlice.reducer;

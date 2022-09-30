@@ -1,19 +1,28 @@
+import { useSelector } from 'react-redux';
 import Footer from '../../components/mollecules/footer';
 import Form from '../../components/mollecules/form';
 import MainNav from '../../components/mollecules/mainNav';
 import './index.css';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
+    const loginIsLoading = useSelector((state) => state.auth.status);
+    const loginSucceeded = useSelector((state) => state.auth.token);
+
     return (
         <>
-            <MainNav />
-            <main className="bg-dark">
-                <Form />
-            </main>
-            <Footer />
+            {loginSucceeded ? (
+                <Navigate to="/profil" />
+            ) : (
+                <>
+                    <MainNav />
+                    <main className="bg-dark">
+                        {loginIsLoading === 'loading' && <p>LOADING</p>}
+                        <Form />
+                    </main>
+                    <Footer />
+                </>
+            )}
         </>
     );
 };

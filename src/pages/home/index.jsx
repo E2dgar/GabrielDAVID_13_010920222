@@ -4,9 +4,6 @@ import Hero from '../../components/mollecules/hero';
 import SignInNav from '../../components/mollecules/signInNav';
 import Features from '../../components/mollecules/featuresSection';
 import './index.css';
-import { useDispatch } from 'react-redux';
-import axios from 'axios';
-import { ROUTES } from '../../constants/api';
 
 const Home = () => {
     return (

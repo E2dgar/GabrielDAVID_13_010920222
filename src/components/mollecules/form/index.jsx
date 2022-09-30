@@ -5,7 +5,7 @@ import Panel from '../../atoms/panel';
 import Button from '../../atoms/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { login } from '../../../features/auth/loginSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ROUTES } from '../../../constants/api';
@@ -16,53 +16,12 @@ import { logTest } from '../../../features/auth/loginSlice';
 export const Form = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [userIsConnected, setUserIsConnected] = useState(false);
-
-    /* const loginStatus = useSelector((state) => state.auth.status);*/
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         dispatch(login({ email: mail, password: password }));
-
-        /**
-         * dispath(login, {mail, password })
-         */
-
-        /* try {
-            const response = await axios.post(ROUTES.LOGIN, {
-                email: mail,
-                password: password
-            });
-            const token = response.data.body.token;
-
-            dispatch(login(JSON.stringify(token)));
-
-            /*TODO passing auth headers wih axios */
-        /* const profil = await fetch(ROUTES.PROFIL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + token
-                }
-            });
-            const data = await profil.json();
-
-            dispatch(
-                getProfil({
-                    firstName: data.body.firstName,
-                    lastName: data.body.lastName
-                })
-            );
-        } catch (error) {
-            console.log(error);
-
-            {loginStatus === 'loading' && <p>Loading</p>}
-
-            
-        }*/
     };
 
     return (

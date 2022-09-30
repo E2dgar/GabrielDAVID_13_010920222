@@ -5,17 +5,19 @@ import H1 from '../../components/atoms/title/h1';
 import Button from '../../components/atoms/button';
 import Card from '../../components/mollecules/card';
 import './index.css';
-import { getProfil } from '../../features/auth/loginSlice';
-import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { getProfil } from '../../features/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-const Account = () => {
+const Profil = () => {
     const dispatch = useDispatch();
+    const firstName = useSelector((state) => state.user.profil.firstName);
+    const lastName = useSelector((state) => state.user.profil.lastName);
 
     useEffect(() => {
         dispatch(getProfil());
     }, [dispatch]);
+
     return (
         <>
             <nav className="main-nav">
@@ -25,7 +27,11 @@ const Account = () => {
             <main className="bg-dark">
                 <header className="user-header">
                     <H1 className="white-heading">
-                        Welcome back Tony Jarvis !
+                        Welcome back
+                        <div>
+                            {firstName} {lastName}
+                        </div>{' '}
+                        !{' '}
                     </H1>
                     <Button className="edit-button" label="Edit Name" />
                 </header>
@@ -55,4 +61,4 @@ const Account = () => {
     );
 };
 
-export default Account;
+export default Profil;
