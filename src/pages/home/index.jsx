@@ -1,17 +1,13 @@
-import LogoLink from '../../components/atoms/link/logoLink';
 import Footer from '../../components/mollecules/footer';
 import Hero from '../../components/mollecules/hero';
-import SignInNav from '../../components/mollecules/signInNav';
 import Features from '../../components/mollecules/featuresSection';
 import './index.css';
+import MainNav from '../../components/mollecules/mainNav';
 
 const Home = () => {
     return (
         <>
-            <nav className="main-nav">
-                <LogoLink />
-                <SignInNav />
-            </nav>
+            <MainNav />
             <main>
                 <Hero />
                 <Features />

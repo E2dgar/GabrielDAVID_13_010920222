@@ -3,9 +3,11 @@ import InputText from '../../../atoms/form/inputText';
 import Panel from '../../../atoms/panel';
 import Button from '../../../atoms/button';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProfil } from '../../../../features/user/userSlice';
 
 export const Form = ({ onClick }) => {
+    const dispatch = useDispatch();
     const firstName = useSelector((state) => state.user.profil.firstName);
     const lastName = useSelector((state) => state.user.profil.lastName);
 
@@ -14,6 +16,10 @@ export const Form = ({ onClick }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        dispatch(
+            updateProfil({ firstName: firstNameEdit, lastName: lastNameEdit })
+        );
     };
 
     return (
@@ -28,22 +34,19 @@ export const Form = ({ onClick }) => {
                     name="firstName"
                     id="firstName"
                     onChange={(e) => setFirstName(e.target.value)}
+                    required
                 />
                 <InputText
                     placeholder={lastName}
                     name="firstName"
                     id="firstName"
                     onChange={(e) => setLastName(e.target.value)}
+                    required
                 />
             </div>
 
             <div className="wrapper">
-                <Button
-                    type="submit"
-                    className="fixed-width"
-                    label="Save"
-                    onClick={onClick}
-                />
+                <Button type="submit" className="fixed-width" label="Save" />
                 <Button
                     className="secondary-button fixed-width"
                     label="Cancel"

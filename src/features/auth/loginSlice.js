@@ -18,8 +18,10 @@ const loginSlice = createSlice({
     initialState: initialState,
     reducers: {
         rememberMe: (state) => {
-            if (localStorage.getItem('token'))
+            if (localStorage.getItem('token')) {
                 state.token = JSON.parse(localStorage.getItem('token'));
+            }
+            state.status = 'succeeded';
         },
         logout: (state) => {
             localStorage.removeItem('token');

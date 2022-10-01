@@ -14,6 +14,9 @@ const Profil = () => {
     const dispatch = useDispatch();
     const firstName = useSelector((state) => state.user.profil.firstName);
     const lastName = useSelector((state) => state.user.profil.lastName);
+    const updateProfilStatus = useSelector(
+        (state) => state.user.profil.updateStatus
+    );
 
     const [isEditing, setIsEditing] = useState(false);
 
@@ -21,7 +24,13 @@ const Profil = () => {
         dispatch(getProfil());
     }, [dispatch]);
 
-    const handleEditClick = () => {
+    useEffect(() => {
+        if (!!updateProfilStatus && isEditing === true) {
+            setIsEditing(false);
+        }
+    }, [updateProfilStatus, isEditing]);
+
+    const handleEdit = () => {
         setIsEditing(!isEditing);
     };
 
@@ -42,13 +51,13 @@ const Profil = () => {
                         )}
                     </H1>
                     {isEditing ? (
-                        <EditForm onClick={handleEditClick} />
+                        <EditForm onClick={handleEdit} />
                     ) : (
                         <>
                             <Button
                                 className="edit-button"
                                 label="Edit Name"
-                                onClick={handleEditClick}
+                                onClick={handleEdit}
                             />
                         </>
                     )}

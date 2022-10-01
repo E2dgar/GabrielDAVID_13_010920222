@@ -7,6 +7,14 @@ export const getProfil = createAsyncThunk('user/getProfil', async () => {
     return response.data;
 });
 
+export const updateProfil = createAsyncThunk(
+    'user/updateProfil',
+    async (payload) => {
+        const response = await axios.put(ROUTES.PROFIL, payload);
+        return response.data;
+    }
+);
+
 const userSlice = createSlice({
     name: 'user',
     initialState: {
@@ -30,6 +38,19 @@ const userSlice = createSlice({
             })
             .addCase(getProfil.rejected, (state) => {
                 state.status = 'failed';
+            })
+            /* Refaire un getProfil ou recup depuis le PUT ??*/
+            .addCase(updateProfil.pending, (state) => {
+                state.profil.updateStatus = 'loading';
+            })
+            .addCase(updateProfil.fulfilled, (state, action) => {
+                state.profil = {
+                    firstName: action.payload.body.firstName,
+                    lastName: action.payload.body.lastName
+                };
+            })
+            .addCase(updateProfil.rejected, (state) => {
+                state.profil.updateStatus = 'failed';
             });
     }
 });
