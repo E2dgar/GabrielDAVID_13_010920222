@@ -6,8 +6,8 @@ import store from './redux/store';
 import { injectStore } from './api/api.js';
 import { Provider } from 'react-redux';
 
-injectStore(store);
 /*import reportWebVitals from './reportWebVitals';*/
+injectStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

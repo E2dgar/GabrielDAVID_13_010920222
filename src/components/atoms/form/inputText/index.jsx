@@ -8,13 +8,15 @@ export const InputText = ({
     id,
     onChange,
     placeholder,
-    required
+    required,
+    inputRef
 }) => {
     return (
         <div className="input-text-wrapper">
             {label && <label htmlFor={name}>{label}</label>}
             <input
                 id={id}
+                ref={inputRef}
                 type={type ?? 'text'}
                 name={name}
                 onChange={onChange}

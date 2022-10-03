@@ -1,18 +1,17 @@
-import PropTypes from 'prop-types';
 import MenuItem from '../../atoms/link/menuItem';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../../features/auth/loginSlice';
-import { Navigate } from 'react-router-dom';
+import { logout } from '../../../features/auth/authSlice';
 
 export const SignOutNav = () => {
     const dispatch = useDispatch();
-    const firstName = useSelector((state) => state.user.profil.firstName);
+    const firstName = useSelector((state) => state.auth.profil.firstName);
 
-    const handleSignOut = () => {
+    const handleSignOut = async () => {
         dispatch(logout());
+        // persistor.purge();
     };
     return (
         <div>

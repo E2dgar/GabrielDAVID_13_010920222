@@ -12,10 +12,10 @@ import EditForm from '../../components/mollecules/forms/editProfil';
 
 const Profil = () => {
     const dispatch = useDispatch();
-    const firstName = useSelector((state) => state.user.profil.firstName);
-    const lastName = useSelector((state) => state.user.profil.lastName);
+    const firstName = useSelector((state) => state.auth.profil.firstName);
+    const lastName = useSelector((state) => state.auth.profil.lastName);
     const updateProfilStatus = useSelector(
-        (state) => state.user.profil.updateStatus
+        (state) => state.auth.profil.updateStatus
     );
 
     const [isEditing, setIsEditing] = useState(false);

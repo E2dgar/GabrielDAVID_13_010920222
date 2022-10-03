@@ -5,19 +5,30 @@ import Panel from '../../../atoms/panel';
 import Button from '../../../atoms/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { login } from '../../../../features/auth/loginSlice';
+import { login } from '../../../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 export const Form = () => {
-    const [mail, setMail] = useState('');
-    const [password, setPassword] = useState('');
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const rememberRef = useRef();
+
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        dispatch(login({ email: mail, password: password }));
+        dispatch(
+            login({
+                email: emailRef.current.value,
+                password: passwordRef.current.value
+            })
+        );
+
+        if (rememberRef.current.checked) {
+            localStorage.setItem('isRemember', true);
+        }
     };
 
     return (
@@ -27,19 +38,20 @@ export const Form = () => {
             <h1>Sign in</h1>
             <form id="login-form" name="login-form" onSubmit={handleSubmit}>
                 <InputText
+                    inputRef={emailRef}
                     label="Mail"
                     name="mail"
                     id="mail"
-                    onChange={(e) => setMail(e.target.value)}
                 />
                 <InputText
+                    inputRef={passwordRef}
                     label="Password"
                     name="password"
                     id="password"
                     type="password"
-                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <CheckBox
+                    inputRef={rememberRef}
                     id="remember-me"
                     label="Remember me"
                     name="remember-me"

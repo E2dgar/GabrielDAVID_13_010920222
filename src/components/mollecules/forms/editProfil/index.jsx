@@ -8,8 +8,8 @@ import { updateProfil } from '../../../../features/user/userSlice';
 
 export const Form = ({ onClick }) => {
     const dispatch = useDispatch();
-    const firstName = useSelector((state) => state.user.profil.firstName);
-    const lastName = useSelector((state) => state.user.profil.lastName);
+    const firstName = useSelector((state) => state.auth.profil.firstName);
+    const lastName = useSelector((state) => state.auth.profil.lastName);
 
     const [firstNameEdit, setFirstName] = useState();
     const [lastNameEdit, setLastName] = useState();
