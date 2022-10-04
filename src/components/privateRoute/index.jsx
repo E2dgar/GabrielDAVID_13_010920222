@@ -1,6 +1,5 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 /**
  * Private route component

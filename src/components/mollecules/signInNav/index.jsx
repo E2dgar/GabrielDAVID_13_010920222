@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import MenuItem from '../../atoms/link/menuItem';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
