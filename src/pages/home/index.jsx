@@ -4,6 +4,11 @@ import Features from '../../components/mollecules/featuresSection';
 import './index.css';
 import MainNav from '../../components/mollecules/mainNav';
 
+/**
+ * Component for showing Home page
+ * @component
+ * @returns {JSX.Element}
+ */
 const Home = () => {
     return (
         <>

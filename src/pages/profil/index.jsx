@@ -10,8 +10,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import EditForm from '../../components/mollecules/forms/editProfil';
 
+/**
+ * Component for showing profil page
+ * @component
+ * @returns {JSX.Element}
+ */
 const Profil = () => {
     const dispatch = useDispatch();
+
     const firstName = useSelector((state) => state.auth.profil.firstName);
     const lastName = useSelector((state) => state.auth.profil.lastName);
     const updateProfilStatus = useSelector(

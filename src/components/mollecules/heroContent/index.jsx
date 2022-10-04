@@ -2,6 +2,11 @@ import Panel from '../../atoms/panel';
 import Paragraph from '../../atoms/paragraph';
 import './index.css';
 
+/**
+ * Component for sowing hero's content
+ * @component
+ * @returns {JSX.Element}
+ */
 export const HeroContent = () => {
     return (
         <Panel className="hero-content">

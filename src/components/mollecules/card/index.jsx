@@ -1,9 +1,14 @@
+import PropTypes from 'prop-types';
+import './index.css';
 import Button from '../../atoms/button';
 import Panel from '../../atoms/panel';
 import Paragraph from '../../atoms/paragraph';
 import H3 from '../../atoms/title/h3';
-import './index.css';
-
+/**
+ * Component for showing a card
+ * @component
+ * @returns {JSX.Element}
+ */
 export const Card = ({ heading, balance, balanceLabel }) => {
     return (
         <Panel className="account">
@@ -23,6 +28,21 @@ export const Card = ({ heading, balance, balanceLabel }) => {
             </div>
         </Panel>
     );
+};
+
+Card.propTypes = {
+    /**
+     * Card heading
+     */
+    heading: PropTypes.string.isRequired,
+    /**
+     * Card's balance
+     */
+    balance: PropTypes.string.isRequired,
+    /**
+     * Card's balanceLabel
+     */
+    balanceLabel: PropTypes.string.isRequired
 };
 
 export default Card;

@@ -4,6 +4,11 @@ import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Component for showing the sign in nav
+ * @component
+ * @returns {JSX.Element}
+ */
 export const SignInNav = () => {
     return (
         <div>

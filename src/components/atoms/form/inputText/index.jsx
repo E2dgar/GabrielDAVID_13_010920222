@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import './index.css';
 
+/**
+ * A input text/password component
+ * @component
+ * @returns {JSX.Element}
+ */
 export const InputText = ({
     label,
     type,
     name,
     id,
-    onChange,
     placeholder,
     required,
     inputRef
@@ -19,7 +23,6 @@ export const InputText = ({
                 ref={inputRef}
                 type={type ?? 'text'}
                 name={name}
-                onChange={onChange}
                 placeholder={placeholder}
                 required={required}
             />
@@ -28,12 +31,34 @@ export const InputText = ({
 };
 
 InputText.propTypes = {
+    /**
+     * InputText's label
+     */
     label: PropTypes.string,
+    /**
+     * InputText's name
+     */
     name: PropTypes.string.isRequired,
+    /**
+     * InputText's id
+     */
     id: PropTypes.string.isRequired,
+    /**
+     * InputText's type
+     */
     type: PropTypes.string,
+    /**
+     * InputText's placeholder
+     */
     placeholder: PropTypes.string,
-    required: PropTypes.bool
+    /**
+     * InputText's required
+     */
+    required: PropTypes.bool,
+    /**
+     * InputText's inputRef
+     */
+    inputRef: PropTypes.string.isRequired
 };
 
 export default InputText;

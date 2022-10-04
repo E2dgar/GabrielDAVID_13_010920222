@@ -1,6 +1,11 @@
 import './index.css';
 import FeatureItem from '../featureItem';
 
+/**
+ * Component for showing features section
+ * @component
+ * @returns {JSX.Element}
+ */
 const Features = () => {
     const staticData = [
         {

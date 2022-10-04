@@ -9,6 +9,11 @@ import { login } from '../../../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import { useRef } from 'react';
 
+/**
+ * Component for showind login form
+ * @component
+ * @returns {JSX.Element}
+ */
 export const Form = () => {
     const emailRef = useRef();
     const passwordRef = useRef();

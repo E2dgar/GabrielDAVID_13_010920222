@@ -1,11 +1,16 @@
+import PropTypes from 'prop-types';
 import './index.css';
 import InputText from '../../../atoms/form/inputText';
-import Panel from '../../../atoms/panel';
 import Button from '../../../atoms/button';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProfil } from '../../../../features/user/userSlice';
 
+/**
+ * Component for showind edit profil form
+ * @component
+ * @returns {JSX.Element}
+ */
 export const Form = ({ onClick }) => {
     const dispatch = useDispatch();
     const firstName = useSelector((state) => state.auth.profil.firstName);
@@ -55,6 +60,13 @@ export const Form = ({ onClick }) => {
             </div>
         </form>
     );
+};
+
+Form.propTypes = {
+    /**
+     * Form's onClick
+     */
+    onClick: PropTypes.string.isRequired
 };
 
 export default Form;

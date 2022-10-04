@@ -1,11 +1,16 @@
 import { HeroContent } from '../heroContent';
 import './index.css';
 
+/**
+ * Component for showing hero's section
+ * @component
+ * @returns {JSX.Element}
+ */
 export const Hero = () => {
     return (
-        <div className="hero">
+        <section className="hero">
             <HeroContent />
-        </div>
+        </section>
     );
 };
 

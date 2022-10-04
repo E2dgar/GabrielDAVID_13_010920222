@@ -1,6 +1,11 @@
 import './index.css';
 import Paragraph from '../../atoms/paragraph';
 
+/**
+ * Component for showing footer
+ * @component
+ * @returns {JSX.Element}
+ */
 const Footer = () => {
     return (
         <footer>

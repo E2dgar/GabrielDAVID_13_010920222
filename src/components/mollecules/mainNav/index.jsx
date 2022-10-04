@@ -6,6 +6,11 @@ import SignInNav from '../signInNav';
 import SignOutNav from '../signOutNav';
 import './index.css';
 
+/**
+ * Component for showing the main nav
+ * @component
+ * @returns {JSX.Element}
+ */
 export const MainNav = () => {
     const dispatch = useDispatch();
     const isUserConnected = useSelector((state) => state.auth.token);
