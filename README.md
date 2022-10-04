@@ -35,4 +35,4 @@ Once the backend is started you can launch the frontend
 
 ## Documentation
 
-This project uses JSDocs. You can consult the doc <a href="https://github.com/E2dgar/GabrielDAVID_13_010920222/global.html"><bold>here</bold></a>
+This project uses JSDocs. You can consult the doc <a href="https://e2dgar.github.io/GabrielDAVID_13_010920222/global.html"><bold>here</bold></a>
