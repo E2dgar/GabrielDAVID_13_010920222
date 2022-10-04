@@ -5,7 +5,6 @@
 ## About
 
 This repository is the front-end for the Argent Bank project.
-The bank-end is available here
 
 ## Requires
 
