@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import './index.css';
 
+/**
+ * A logo link component
+ * @component
+ * @returns {JSX.Element}
+ */
 export const LogoLink = () => {
     return (
         <Link className="main-nav-logo" to="/">
