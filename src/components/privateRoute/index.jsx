@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
  */
 const PrivateRoute = ({ children }) => {
     const isAuthorized = useSelector(
-        (state) => state.auth.authStatus === 'succeeded'
+        (state) => state.auth.status === 'succeeded'
     );
 
     if (!isAuthorized) {

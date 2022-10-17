@@ -36,8 +36,8 @@ const App = () => {
         if (token) {
             // dispatch(rememberMe());
             // dispatch(findToken());
-            dispatch(rememberMe());
-            dispatch(getProfil(JSON.stringify(token)));
+            // dispatch(rememberMe());
+            // dispatch(getProfil(JSON.stringify(token)));
         }
     });
 

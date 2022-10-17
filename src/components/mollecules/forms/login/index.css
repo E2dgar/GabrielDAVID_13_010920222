@@ -1,3 +1,16 @@
+.sign-in-content {
+    position: relative;
+}
+
 .sign-in-content h1 {
     text-align: center;
+}
+
+.loader-layer {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

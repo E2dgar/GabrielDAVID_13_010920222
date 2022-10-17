@@ -6,8 +6,9 @@ import Button from '../../../atoms/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { login } from '../../../../features/auth/authSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
+import Loader from '../../../atoms/loader';
 
 /**
  * Component for showind login form
@@ -15,6 +16,8 @@ import { useRef } from 'react';
  * @returns {JSX.Element}
  */
 export const Form = () => {
+    const isLoading = useSelector((state) => state.auth.status);
+
     const emailRef = useRef();
     const passwordRef = useRef();
     const rememberRef = useRef();
@@ -63,6 +66,12 @@ export const Form = () => {
                 />
                 <Button className="large-secondary-button" label="Sign in" />
             </form>
+
+            {isLoading === 'loading' && (
+                <div className="loader-layer">
+                    <Loader />
+                </div>
+            )}
         </Panel>
     );
 };

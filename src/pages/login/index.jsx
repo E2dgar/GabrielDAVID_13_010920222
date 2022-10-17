@@ -12,14 +12,7 @@ import { useEffect } from 'react';
  * @returns {JSX.Element}
  */
 const Login = () => {
-    const loginState = useSelector((state) => state.auth.authStatus);
-    // const loginSucceeded = useSelector((state) => state.auth.token);
-    // useEffect(() => {
-    //     console.log('state', loginState);
-    //     if (loginState === 'succeeded') {
-    //         <Navigate to="/profil" />;
-    //     }
-    // }, [loginState]);
+    const loginState = useSelector((state) => state.auth.status);
 
     return (
         <>
@@ -29,7 +22,6 @@ const Login = () => {
                 <>
                     <MainNav />
                     <main className="bg-dark">
-                        {loginState === 'loading' && <p>LOADING</p>}
                         <Form />
                     </main>
                     <Footer />

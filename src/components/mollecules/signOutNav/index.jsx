@@ -13,7 +13,7 @@ import { userLogout } from '../../../features/user/userSlice';
  */
 export const SignOutNav = () => {
     const dispatch = useDispatch();
-    const firstName = useSelector((state) => state.auth.profil.firstName);
+    const firstName = useSelector((state) => state.user.profile.firstName);
 
     const handleSignOut = () => {
         dispatch(logout());
