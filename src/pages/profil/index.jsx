@@ -9,6 +9,7 @@ import { getProfil } from '../../features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import EditForm from '../../components/mollecules/forms/editProfil';
+import Loader from '../../components/atoms/loader';
 
 /**
  * Component for showing profil page
@@ -20,6 +21,7 @@ const Profil = () => {
 
     const firstName = useSelector((state) => state.user.profile.firstName);
     const lastName = useSelector((state) => state.user.profile.lastName);
+    const loginStatus = useSelector((state) => state.auth.status);
     const updateProfilStatus = useSelector(
         (state) => state.user.profile.updateStatus
     );
@@ -27,8 +29,8 @@ const Profil = () => {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        dispatch(getProfil());
-    }, [dispatch]);
+        loginStatus === 'succeeded' && dispatch(getProfil());
+    }, [dispatch, loginStatus]);
 
     useEffect(() => {
         if (!!updateProfilStatus && isEditing === true) {
@@ -52,7 +54,11 @@ const Profil = () => {
                         Welcome back
                         {!isEditing && (
                             <p className="welcome">
-                                {firstName} {lastName} !
+                                {loginStatus === 'loading' ? (
+                                    <Loader />
+                                ) : (
+                                    `${firstName} ${lastName} !`
+                                )}
                             </p>
                         )}
                     </H1>

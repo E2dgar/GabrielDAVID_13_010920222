@@ -9,6 +9,7 @@ import { login } from '../../../../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import Loader from '../../../atoms/loader';
+import { rememberState } from '../../../../features/rememberMe/rememberMeSlice';
 
 /**
  * Component for showind login form
@@ -35,7 +36,8 @@ export const Form = () => {
         );
 
         if (rememberRef.current.checked) {
-            localStorage.setItem('isRemember', true);
+            // localStorage.setItem('isRemember', true);
+            dispatch(rememberState());
         }
     };
 

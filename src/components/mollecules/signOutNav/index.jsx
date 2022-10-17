@@ -5,6 +5,7 @@ import { faUserCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../features/auth/authSlice';
 import { userLogout } from '../../../features/user/userSlice';
+import { storageLogout } from '../../../features/rememberMe/rememberMeSlice';
 
 /**
  * Component for showing sign out nav
@@ -18,7 +19,9 @@ export const SignOutNav = () => {
     const handleSignOut = () => {
         dispatch(logout());
         dispatch(userLogout());
+        dispatch(storageLogout());
     };
+
     return (
         <div>
             <MenuItem

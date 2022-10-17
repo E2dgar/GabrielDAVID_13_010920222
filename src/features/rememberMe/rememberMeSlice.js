@@ -8,16 +8,19 @@ const rememberSlice = createSlice({
     name: 'remember',
     initialState: initialState,
     reducers: {
-        logout: (state) => {
+        rememberState: (state) => {
+            state.rememberMe = true;
+        },
+        storageLogout: (state) => {
             if (localStorage.getItem('isRemember')) {
                 localStorage.removeItem('isRemember');
             }
             localStorage.removeItem('token');
-            // state.token = null;
+            state.rememberMe = true;
         }
     }
 });
 
-export const { logout, findToken } = rememberSlice.actions;
+export const { rememberState, storageLogout } = rememberSlice.actions;
 
 export default rememberSlice.reducer;

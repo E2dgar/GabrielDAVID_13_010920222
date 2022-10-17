@@ -16,16 +16,12 @@ const authSlice = createSlice({
     initialState: initialState,
     reducers: {
         logout: (state) => {
-            if (localStorage.getItem('isRemember')) {
-                localStorage.removeItem('isRemember');
-            }
-            localStorage.removeItem('token');
-
             state.status = 'idle';
             state.error = null;
         },
         rememberMe: (state) => {
             state.status = 'succeeded';
+            state.error = null;
         }
     },
     extraReducers(builder) {

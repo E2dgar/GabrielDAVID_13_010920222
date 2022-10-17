@@ -5,23 +5,28 @@ import Profil from './pages/profil';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import { useDispatch, useSelector } from 'react-redux';
-// import { rememberMe } from './features/rememberMe/rememberMeSlice';
-// import AuthWrapper from './components/authWrapper';
 import { useEffect } from 'react';
-import { getProfil } from './features/user/userSlice';
-import { login, rememberMe } from './features/auth/authSlice';
+import { rememberMe, logout } from './features/auth/authSlice';
+import {
+    rememberState,
+    storageLogout
+} from './features/rememberMe/rememberMeSlice';
+import { userLogout } from './features/user/userSlice';
 
 const App = () => {
     const dispatch = useDispatch();
     const token = localStorage.getItem('token');
-    const isRemember = localStorage.getItem('isRemember');
-
+    // const isRemember = localStorage.getItem('isRemember');
+    const isRemember = useSelector((state) => state.remember.rememberMe);
+    console.log('remem', isRemember);
     useEffect(() => {
         const handleTabClose = (e) => {
             e.preventDefault();
 
             if (!isRemember) {
-                localStorage.removeItem('token');
+                dispatch(storageLogout());
+                dispatch(logout());
+                dispatch(userLogout());
             }
         };
 
@@ -30,14 +35,12 @@ const App = () => {
         return () => {
             window.removeEventListener('beforeunload', handleTabClose);
         };
-    }, [isRemember]);
+    }, [isRemember, dispatch]);
 
     useEffect(() => {
         if (token) {
-            // dispatch(rememberMe());
-            // dispatch(findToken());
-            // dispatch(rememberMe());
-            // dispatch(getProfil(JSON.stringify(token)));
+            dispatch(rememberState());
+            dispatch(rememberMe());
         }
     });
 
@@ -46,9 +49,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    {/* <Route element={<AuthWrapper />}> */}
                     <Route path="/login" element={<Login />} />
-                    {/* </Route> */}
                     <Route
                         path="/profil"
                         element={
