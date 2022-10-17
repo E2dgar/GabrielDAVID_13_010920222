@@ -22,8 +22,9 @@ const Profil = () => {
     const firstName = useSelector((state) => state.user.profile.firstName);
     const lastName = useSelector((state) => state.user.profile.lastName);
     const loginStatus = useSelector((state) => state.auth.status);
+    const userStatus = useSelector((state) => state.user.status);
     const updateProfilStatus = useSelector(
-        (state) => state.user.profile.updateStatus
+        (state) => state.user.profile.status
     );
 
     const [isEditing, setIsEditing] = useState(false);
@@ -53,13 +54,13 @@ const Profil = () => {
                     <H1 className="white-heading">
                         Welcome back
                         {!isEditing && (
-                            <p className="welcome">
-                                {loginStatus === 'loading' ? (
-                                    <Loader />
+                            <div className="welcome">
+                                {userStatus === 'loading' ? (
+                                    <Loader size="small" />
                                 ) : (
                                     `${firstName} ${lastName} !`
                                 )}
-                            </p>
+                            </div>
                         )}
                     </H1>
                     {isEditing ? (

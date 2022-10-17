@@ -1,7 +1,7 @@
 import './index.css';
 
-const Loader = () => {
-    return <div className="lds-dual-ring"></div>;
+const Loader = ({ size }) => {
+    return <div className={`lds-dual-ring ${size}`}></div>;
 };
 
 export default Loader;

@@ -12,9 +12,6 @@ const rememberSlice = createSlice({
             state.rememberMe = true;
         },
         storageLogout: (state) => {
-            if (localStorage.getItem('isRemember')) {
-                localStorage.removeItem('isRemember');
-            }
             localStorage.removeItem('token');
             state.rememberMe = true;
         }

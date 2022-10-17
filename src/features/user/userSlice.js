@@ -46,8 +46,9 @@ const userSlice = createSlice({
                 state.profile.firstName = action.payload.body.firstName;
                 state.profile.lastName = action.payload.body.lastName;
             })
-            .addCase(getProfil.rejected, (state) => {
+            .addCase(getProfil.rejected, (state, action) => {
                 state.status = 'failed';
+                state.error = action.error;
             })
             /* Profil update */
             .addCase(updateProfil.pending, (state) => {
@@ -59,8 +60,9 @@ const userSlice = createSlice({
                     lastName: action.payload.body.lastName
                 };
             })
-            .addCase(updateProfil.rejected, (state) => {
-                state.profile.updateStatus = 'failed';
+            .addCase(updateProfil.rejected, (state, action) => {
+                state.profile.status = 'failed';
+                state.profile.error = action.error;
             });
     }
 });

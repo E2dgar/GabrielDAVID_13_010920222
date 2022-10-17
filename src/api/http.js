@@ -7,7 +7,7 @@ const sleep = (time) => {
 
 const post = async (route, payload) => {
     const response = await axios.post(route, payload);
-    await sleep(2000);
+    await sleep(200);
 
     return response.data;
 };
