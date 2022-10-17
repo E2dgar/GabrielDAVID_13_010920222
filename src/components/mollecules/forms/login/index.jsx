@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import Loader from '../../../atoms/loader';
 import { rememberState } from '../../../../features/rememberMe/rememberMeSlice';
+import { ERRORS_LOGIN } from '../../../../constants/errors';
 
 /**
  * Component for showind login form
@@ -18,6 +19,7 @@ import { rememberState } from '../../../../features/rememberMe/rememberMeSlice';
  */
 export const Form = () => {
     const isLoading = useSelector((state) => state.auth.status);
+    const error = useSelector((state) => state.auth.error?.code);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -36,7 +38,6 @@ export const Form = () => {
         );
 
         if (rememberRef.current.checked) {
-            // localStorage.setItem('isRemember', true);
             dispatch(rememberState());
         }
     };
@@ -66,6 +67,9 @@ export const Form = () => {
                     label="Remember me"
                     name="remember-me"
                 />
+
+                {error && <p className="error">{ERRORS_LOGIN[`${error}`]}</p>}
+
                 <Button className="large-secondary-button" label="Sign in" />
             </form>
 

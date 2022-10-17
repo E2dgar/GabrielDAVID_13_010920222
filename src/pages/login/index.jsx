@@ -17,7 +17,7 @@ const Login = () => {
     return (
         <>
             {loginState === 'succeeded' ? (
-                <Navigate to="/profil" />
+                <Navigate to="/profile" />
             ) : (
                 <>
                     <MainNav />

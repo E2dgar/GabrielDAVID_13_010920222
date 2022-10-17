@@ -5,6 +5,7 @@ import Button from '../../../atoms/button';
 import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProfil } from '../../../../features/user/userSlice';
+import { ERRORS_PROFIL } from '../../../../constants/errors';
 
 /**
  * Component for showind edit profil form
@@ -13,9 +14,9 @@ import { updateProfil } from '../../../../features/user/userSlice';
  */
 export const Form = ({ onClick }) => {
     const dispatch = useDispatch();
+
     const firstName = useSelector((state) => state.user.profile.firstName);
     const lastName = useSelector((state) => state.user.profile.lastName);
-
     const firstNameRef = useRef();
     const lastNameRef = useRef();
 

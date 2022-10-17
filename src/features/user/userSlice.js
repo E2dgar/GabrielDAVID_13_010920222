@@ -52,7 +52,7 @@ const userSlice = createSlice({
             })
             /* Profil update */
             .addCase(updateProfil.pending, (state) => {
-                state.profile.updateStatus = 'loading';
+                state.profile.status = 'loading';
             })
             .addCase(updateProfil.fulfilled, (state, action) => {
                 state.profile = {

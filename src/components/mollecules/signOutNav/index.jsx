@@ -27,7 +27,7 @@ export const SignOutNav = () => {
             <MenuItem
                 label={firstName}
                 faIcon={<FontAwesomeIcon icon={faUserCircle} />}
-                href="/profil"
+                href="/profile"
             />
             <MenuItem
                 label=" Sign out"

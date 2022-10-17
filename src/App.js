@@ -51,7 +51,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route
-                        path="/profil"
+                        path="/profile"
                         element={
                             <PrivateRoute>
                                 <Profil />

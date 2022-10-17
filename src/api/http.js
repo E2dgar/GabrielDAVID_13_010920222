@@ -12,14 +12,9 @@ const post = async (route, payload) => {
     return response.data;
 };
 
-const get = async (route) => {
-    const response = await axios.get(route);
-    return response.data;
-};
-
 const put = async (route, payload) => {
     const response = await axios.put(route, payload);
     return response.data;
 };
 
-export { post, get, put };
+export { post, put };

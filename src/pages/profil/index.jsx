@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import EditForm from '../../components/mollecules/forms/editProfil';
 import Loader from '../../components/atoms/loader';
+import { ERRORS_PROFIL } from '../../constants/errors';
 
 /**
  * Component for showing profil page
@@ -26,6 +27,7 @@ const Profil = () => {
     const updateProfilStatus = useSelector(
         (state) => state.user.profile.status
     );
+    const error = useSelector((state) => state.user.error?.code);
 
     const [isEditing, setIsEditing] = useState(false);
 
@@ -61,6 +63,9 @@ const Profil = () => {
                                     `${firstName} ${lastName} !`
                                 )}
                             </div>
+                        )}
+                        {error && (
+                            <p className="error">{ERRORS_PROFIL[`${error}`]}</p>
                         )}
                     </H1>
                     {isEditing ? (
