@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../features/auth/authSlice';
+import { userLogout } from '../../../features/user/userSlice';
 
 /**
  * Component for showing sign out nav
@@ -14,8 +15,9 @@ export const SignOutNav = () => {
     const dispatch = useDispatch();
     const firstName = useSelector((state) => state.auth.profil.firstName);
 
-    const handleSignOut = async () => {
+    const handleSignOut = () => {
         dispatch(logout());
+        dispatch(userLogout());
     };
     return (
         <div>

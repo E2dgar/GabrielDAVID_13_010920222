@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 import InputText from '../../../atoms/form/inputText';
 import Button from '../../../atoms/button';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProfil } from '../../../../features/user/userSlice';
 
@@ -16,14 +16,17 @@ export const Form = ({ onClick }) => {
     const firstName = useSelector((state) => state.auth.profil.firstName);
     const lastName = useSelector((state) => state.auth.profil.lastName);
 
-    const [firstNameEdit, setFirstName] = useState();
-    const [lastNameEdit, setLastName] = useState();
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         dispatch(
-            updateProfil({ firstName: firstNameEdit, lastName: lastNameEdit })
+            updateProfil({
+                firstName: firstNameRef.current.value,
+                lastName: lastNameRef.current.value
+            })
         );
     };
 
@@ -35,17 +38,17 @@ export const Form = ({ onClick }) => {
             onSubmit={handleSubmit}>
             <div className="wrapper input-wrapper">
                 <InputText
+                    inputRef={firstNameRef}
                     placeholder={firstName}
                     name="firstName"
                     id="firstName"
-                    onChange={(e) => setFirstName(e.target.value)}
                     required
                 />
                 <InputText
+                    inputRef={lastNameRef}
                     placeholder={lastName}
                     name="firstName"
                     id="firstName"
-                    onChange={(e) => setLastName(e.target.value)}
                     required
                 />
             </div>
@@ -66,7 +69,7 @@ Form.propTypes = {
     /**
      * Form's onClick
      */
-    onClick: PropTypes.string.isRequired
+    onClick: PropTypes.func.isRequired
 };
 
 export default Form;

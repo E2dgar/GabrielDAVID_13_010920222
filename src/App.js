@@ -4,11 +4,12 @@ import Home from './pages/home';
 import Profil from './pages/profil';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
-import { useDispatch } from 'react-redux';
-import { rememberMe } from './features/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+// import { rememberMe } from './features/rememberMe/rememberMeSlice';
 // import AuthWrapper from './components/authWrapper';
 import { useEffect } from 'react';
 import { getProfil } from './features/user/userSlice';
+import { login, rememberMe } from './features/auth/authSlice';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const App = () => {
 
     useEffect(() => {
         if (token) {
+            // dispatch(rememberMe());
+            // dispatch(findToken());
             dispatch(rememberMe());
             dispatch(getProfil(JSON.stringify(token)));
         }

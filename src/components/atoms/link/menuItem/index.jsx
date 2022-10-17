@@ -28,11 +28,11 @@ MenuItem.propTypes = {
     /**
      * MenuItem's href
      */
-    href: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired
     /**
      * MenuItem's onClick
      */
-    onClick: PropTypes.string
+    // onClick: PropTypes.string
 };
 
 export default MenuItem;

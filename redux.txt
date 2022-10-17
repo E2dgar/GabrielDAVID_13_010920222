@@ -26,3 +26,28 @@ actions : type: 'connection'   =>   isUserConnected: true, userId: mail, remmebe
           type: 'updateProfil'  => 'setLocalStorage'
           type: 'disconnect'  => clearLocalStorage
 
+
+transactions {
+  token => headers
+  [
+
+  ]
+}
+transaction {
+  id:
+  date:
+  amount:
+  balance:
+  description:
+  type:
+  category:
+  notes:
+
+
+}
+
+get transactions user/transactions
+
+get transaction user/transaction/{id}
+
+put transaction user/transaction/{id}/update

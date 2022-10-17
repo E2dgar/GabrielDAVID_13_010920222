@@ -1,58 +1,70 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ROUTES } from '../../constants/api';
-import axios from 'axios';
+import { post, put } from '../../api/http';
+
+const initialState = {
+    status: 'idle',
+    error: null,
+    profile: {
+        firstName: '',
+        lastName: ''
+    }
+};
 
 export const getProfil = createAsyncThunk('user/getProfil', async () => {
-    const response = await axios.post(ROUTES.PROFIL);
-    return response.data;
+    return await post(ROUTES.PROFIL);
 });
 
 export const updateProfil = createAsyncThunk(
     'user/updateProfil',
     async (payload) => {
-        const response = await axios.put(ROUTES.PROFIL, payload);
-        return response.data;
+        return put(ROUTES.PROFIL, payload);
     }
 );
 
 const userSlice = createSlice({
     name: 'user',
-    initialState: {
-        status: 'idle',
-        error: null,
-        profil: {
-            firstName: '',
-            lastName: ''
+    initialState: initialState,
+    reducers: {
+        userLogout: (state) => {
+            state.status = 'idle';
+            state.error = null;
+            state.profile = {
+                firstName: '',
+                lastName: ''
+            };
         }
     },
-    reducers: {},
     extraReducers(builder) {
         builder
+            /* Profil get */
             .addCase(getProfil.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(getProfil.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.profil.firstName = action.payload.body.firstName;
-                state.profil.lastName = action.payload.body.lastName;
+                state.profile.firstName = action.payload.body.firstName;
+                state.profile.lastName = action.payload.body.lastName;
             })
             .addCase(getProfil.rejected, (state) => {
                 state.status = 'failed';
             })
-            /* Refaire un getProfil ou recup depuis le PUT ??*/
+            /* Profil update */
             .addCase(updateProfil.pending, (state) => {
-                state.profil.updateStatus = 'loading';
+                state.profile.updateStatus = 'loading';
             })
             .addCase(updateProfil.fulfilled, (state, action) => {
-                state.profil = {
+                state.profile = {
                     firstName: action.payload.body.firstName,
                     lastName: action.payload.body.lastName
                 };
             })
             .addCase(updateProfil.rejected, (state) => {
-                state.profil.updateStatus = 'failed';
+                state.profile.updateStatus = 'failed';
             });
     }
 });
+
+export const { userLogout } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -4,6 +4,7 @@ import Form from '../../components/mollecules/forms/login';
 import MainNav from '../../components/mollecules/mainNav';
 import './index.css';
 import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 /**
  * Component for showing Login page
@@ -11,18 +12,24 @@ import { Navigate } from 'react-router-dom';
  * @returns {JSX.Element}
  */
 const Login = () => {
-    const loginIsLoading = useSelector((state) => state.auth.status);
-    const loginSucceeded = useSelector((state) => state.auth.token);
+    const loginState = useSelector((state) => state.auth.authStatus);
+    // const loginSucceeded = useSelector((state) => state.auth.token);
+    // useEffect(() => {
+    //     console.log('state', loginState);
+    //     if (loginState === 'succeeded') {
+    //         <Navigate to="/profil" />;
+    //     }
+    // }, [loginState]);
 
     return (
         <>
-            {loginSucceeded ? (
+            {loginState === 'succeeded' ? (
                 <Navigate to="/profil" />
             ) : (
                 <>
                     <MainNav />
                     <main className="bg-dark">
-                        {loginIsLoading === 'loading' && <p>LOADING</p>}
+                        {loginState === 'loading' && <p>LOADING</p>}
                         <Form />
                     </main>
                     <Footer />

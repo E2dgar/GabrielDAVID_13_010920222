@@ -31,7 +31,7 @@ CheckBox.propTypes = {
     /**
      * Checkbox's inputRef
      */
-    inputRef: PropTypes.string.isRequired
+    inputRef: PropTypes.object.isRequired
 };
 
 export default CheckBox;

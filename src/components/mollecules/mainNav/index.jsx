@@ -13,7 +13,7 @@ import './index.css';
  */
 export const MainNav = () => {
     const dispatch = useDispatch();
-    const isUserConnected = useSelector((state) => state.auth.token);
+    const isUserConnected = localStorage.getItem('token');
 
     useEffect(() => {
         isUserConnected && dispatch(getProfil());

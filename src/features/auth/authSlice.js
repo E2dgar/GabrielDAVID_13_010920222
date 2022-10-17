@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ROUTES } from '../../constants/api';
-import axios from 'axios';
+import { post, put } from '../../api/http';
+// import { rememberMe } from '../rememberMe/rememberMeSlice';
 
 const initialState = {
     authStatus: 'idle',
     authError: null,
-    token: null,
+    // token: null,
     userStatus: 'idle',
     userError: null,
     profil: {
@@ -14,21 +15,34 @@ const initialState = {
     }
 };
 
+// export const login = createAsyncThunk('auth/login', async (payload) => {
+//     const response = await axios.post(ROUTES.LOGIN, payload, { timeout: 5000 });
+//     return response.data;
+// });
+
 export const login = createAsyncThunk('auth/login', async (payload) => {
-    const response = await axios.post(ROUTES.LOGIN, payload, { timeout: 5000 });
-    return response.data;
+    return await post(ROUTES.LOGIN, payload);
 });
 
+// export const getProfil = createAsyncThunk('user/getProfil', async () => {
+//     const response = await axios.post(ROUTES.PROFIL);
+//     return response.data;
+// });
 export const getProfil = createAsyncThunk('user/getProfil', async () => {
-    const response = await axios.post(ROUTES.PROFIL);
-    return response.data;
+    return await post(ROUTES.PROFIL);
 });
 
+// export const updateProfil = createAsyncThunk(
+//     'user/updateProfil',
+//     async (payload) => {
+//         const response = await axios.put(ROUTES.PROFIL, payload);
+//         return response.data;
+//     }
+// );
 export const updateProfil = createAsyncThunk(
     'user/updateProfil',
     async (payload) => {
-        const response = await axios.put(ROUTES.PROFIL, payload);
-        return response.data;
+        return put(ROUTES.PROFIL, payload);
     }
 );
 
@@ -41,16 +55,22 @@ const authSlice = createSlice({
                 localStorage.removeItem('isRemember');
             }
             localStorage.removeItem('token');
-            state.token = null;
-            state = initialState;
+            // state.token = null;
+            state.authStatus = 'idle';
+            state.profil = {
+                firstName: '',
+                lastName: ''
+            };
+            state.userStatus = 'idle';
         },
         rememberMe: (state) => {
             state.authStatus = 'succeeded';
-            state.token = JSON.parse(localStorage.getItem('token'));
+            // state.token = JSON.parse(localStorage.getItem('token'));
         }
     },
     extraReducers(builder) {
         builder
+            /*Login post */
             .addCase(login.pending, (state) => {
                 state.authStatus = 'loading';
             })
@@ -60,12 +80,14 @@ const authSlice = createSlice({
                     JSON.stringify(action.payload.body.token)
                 );
 
-                state.token = action.payload.body.token;
+                // state.token = action.payload.body.token;
                 state.authStatus = 'succeeded';
             })
-            .addCase(login.rejected, (state) => {
+            .addCase(login.rejected, (state, action) => {
+                console.log('error', action.error);
                 state.authStatus = 'failed';
             })
+            /* Profil get */
             .addCase(getProfil.pending, (state) => {
                 state.userStatus = 'loading';
             })
@@ -77,7 +99,7 @@ const authSlice = createSlice({
             .addCase(getProfil.rejected, (state) => {
                 state.userStatus = 'failed';
             })
-            /* Refaire un getProfil ou recup depuis le PUT ??*/
+            /* Profil update */
             .addCase(updateProfil.pending, (state) => {
                 state.profil.updateStatus = 'loading';
             })
@@ -93,6 +115,6 @@ const authSlice = createSlice({
     }
 });
 
-export const { rememberMe, logout } = authSlice.actions;
+export const { logout, rememberMe } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -7,9 +7,11 @@ import { useSelector } from 'react-redux';
  * @returns {JSX.Element}
  */
 const PrivateRoute = ({ children }) => {
-    const token = useSelector((state) => state.auth.token);
+    const isAuthorized = useSelector(
+        (state) => state.auth.authStatus === 'succeeded'
+    );
 
-    if (!token) {
+    if (!isAuthorized) {
         return <Navigate to="/login" />;
     }
 
