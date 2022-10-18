@@ -181,8 +181,8 @@ paths:
                 - Bearer: []
             tags:
                 - User Module
-            summary: Get User's Transaction by transaction ID
-            description: API for fetching a user transaction
+            summary: Put User's Transaction by transaction ID
+            description: API for put a user transaction
             parameters:
                 - in: header
                   type: string
