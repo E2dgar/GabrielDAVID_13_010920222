@@ -8,12 +8,14 @@ const rememberSlice = createSlice({
     name: 'remember',
     initialState: initialState,
     reducers: {
+        /*Set remember */
         rememberState: (state) => {
             state.rememberMe = true;
         },
+        /*Clear remember*/
         storageLogout: (state) => {
             localStorage.removeItem('token');
-            state.rememberMe = true;
+            state.rememberMe = false;
         }
     }
 });

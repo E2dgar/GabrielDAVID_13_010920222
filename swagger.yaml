@@ -130,7 +130,7 @@ paths:
                   type: string
                   name: CurrentMonth
                   description: Current month transactions
-                  required: true  
+                  required: true
             produces:
                 - application/json
             responses:
@@ -176,7 +176,6 @@ paths:
                     description: Ressource not found
                 '500':
                     description: Internal Server Error
-    /user/transactions/{id}:
         put:
             security:
                 - Bearer: []
@@ -280,6 +279,8 @@ definitions:
                         type: string
                     notes:
                         type: string
+                    description:
+                        type: string
     UserProfile:
         type: object
         properties:
@@ -318,4 +319,6 @@ definitions:
             category:
                 type: string
             notes:
+                type: string
+            description:
                 type: string

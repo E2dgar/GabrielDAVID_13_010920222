@@ -4,7 +4,6 @@ import Form from '../../components/mollecules/forms/login';
 import MainNav from '../../components/mollecules/mainNav';
 import './index.css';
 import { Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 /**
  * Component for showing Login page

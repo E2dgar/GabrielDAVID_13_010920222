@@ -11,10 +11,12 @@ const initialState = {
     }
 };
 
+/*Async thunk for get profil*/
 export const getProfil = createAsyncThunk('user/getProfil', async () => {
     return await post(ROUTES.PROFIL);
 });
 
+/*Async thunk for update profil*/
 export const updateProfil = createAsyncThunk(
     'user/updateProfil',
     async (payload) => {
@@ -26,6 +28,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
+        /*Clear state*/
         userLogout: (state) => {
             state.status = 'idle';
             state.error = null;

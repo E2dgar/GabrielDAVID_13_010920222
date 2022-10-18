@@ -5,7 +5,6 @@ import Button from '../../../atoms/button';
 import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProfil } from '../../../../features/user/userSlice';
-import { ERRORS_PROFIL } from '../../../../constants/errors';
 
 /**
  * Component for showind edit profil form

@@ -15,10 +15,10 @@ import { userLogout } from './features/user/userSlice';
 
 const App = () => {
     const dispatch = useDispatch();
+
     const token = localStorage.getItem('token');
-    // const isRemember = localStorage.getItem('isRemember');
     const isRemember = useSelector((state) => state.remember.rememberMe);
-    console.log('remem', isRemember);
+
     useEffect(() => {
         const handleTabClose = (e) => {
             e.preventDefault();

@@ -7,6 +7,7 @@ const initialState = {
     error: null
 };
 
+/*Async Thunk for login*/
 export const login = createAsyncThunk('auth/login', async (payload) => {
     return await post(ROUTES.LOGIN, payload);
 });
@@ -15,10 +16,12 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: initialState,
     reducers: {
+        /* Reset the state*/
         logout: (state) => {
             state.status = 'idle';
             state.error = null;
         },
+        /*Set auth ok when remember */
         rememberMe: (state) => {
             state.status = 'succeeded';
             state.error = null;
