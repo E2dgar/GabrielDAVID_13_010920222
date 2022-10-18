@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>components/atoms/form/checkBox/index.jsx - Documentation</title>
+    <title>components/atoms/link/logoLink/index.jsx - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">components/atoms/form/checkBox/index.jsx</h1>
+    <h1 class="page-title">components/atoms/link/logoLink/index.jsx</h1>
     
 
     
@@ -39,43 +39,28 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types';
+            <pre class="prettyprint source linenums"><code>import { Link } from 'react-router-dom';
 import './index.css';
 
 /**
- * A checkbox component
+ * A logo link component
  * @component
  * @returns {JSX.Element}
  */
-export const CheckBox = ({ label, id, name, inputRef }) => {
+export const LogoLink = () => {
     return (
-        &lt;div className="input-remember">
-            &lt;input type="checkbox" id={id} name={name} ref={inputRef} />
-            &lt;label htmlFor={id}>{label}&lt;/label>
-        &lt;/div>
+        &lt;Link className="main-nav-logo" to="/">
+            &lt;img
+                className="main-nav-logo-image"
+                src="assets/img/argentBankLogo.png"
+                alt="Argent Bank Logo"
+            />
+            &lt;h1 className="sr-only">Argent Bank&lt;/h1>
+        &lt;/Link>
     );
 };
 
-CheckBox.propTypes = {
-    /**
-     * Checkbox's label
-     */
-    label: PropTypes.string.isRequired,
-    /**
-     * Checkbox's id
-     */
-    id: PropTypes.string.isRequired,
-    /**
-     * Checkbox's name
-     */
-    name: PropTypes.string.isRequired,
-    /**
-     * Checkbox's inputRef
-     */
-    inputRef: PropTypes.object.isRequired
-};
-
-export default CheckBox;
+export default LogoLink;
 </code></pre>
         </article>
     </section>

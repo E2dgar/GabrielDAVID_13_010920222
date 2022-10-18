@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>components/atoms/form/checkBox/index.jsx - Documentation</title>
+    <title>components/atoms/loader/index.jsx - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">components/atoms/form/checkBox/index.jsx</h1>
+    <h1 class="page-title">components/atoms/loader/index.jsx</h1>
     
 
     
@@ -43,39 +43,22 @@
 import './index.css';
 
 /**
- * A checkbox component
+ * A loader component
  * @component
  * @returns {JSX.Element}
  */
-export const CheckBox = ({ label, id, name, inputRef }) => {
-    return (
-        &lt;div className="input-remember">
-            &lt;input type="checkbox" id={id} name={name} ref={inputRef} />
-            &lt;label htmlFor={id}>{label}&lt;/label>
-        &lt;/div>
-    );
+const Loader = ({ size }) => {
+    return &lt;div className={`lds-dual-ring ${size}`}>&lt;/div>;
 };
 
-CheckBox.propTypes = {
+Loader.propTypes = {
     /**
-     * Checkbox's label
+     * Loader's size
      */
-    label: PropTypes.string.isRequired,
-    /**
-     * Checkbox's id
-     */
-    id: PropTypes.string.isRequired,
-    /**
-     * Checkbox's name
-     */
-    name: PropTypes.string.isRequired,
-    /**
-     * Checkbox's inputRef
-     */
-    inputRef: PropTypes.object.isRequired
+    size: PropTypes.string
 };
 
-export default CheckBox;
+export default Loader;
 </code></pre>
         </article>
     </section>
