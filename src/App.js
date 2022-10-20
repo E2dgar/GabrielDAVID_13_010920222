@@ -12,6 +12,7 @@ import {
     storageLogout
 } from './features/rememberMe/rememberMeSlice';
 import { userLogout } from './features/user/userSlice';
+import Page404 from './pages/404';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const App = () => {
                             </PrivateRoute>
                         }
                     />
+                    <Route path="*" element={<Page404 />} />
                 </Routes>
             </BrowserRouter>
         </div>
