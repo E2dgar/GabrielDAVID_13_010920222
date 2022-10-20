@@ -2,7 +2,7 @@ import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
 import Profil from './pages/profil';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -40,6 +40,16 @@ const App = () => {
 
     useEffect(() => {
         if (token) {
+            /*Check if token has expired*/
+            const tokenExpiration =
+                JSON.parse(atob(token.split('.')[1])).exp * 1000;
+
+            if (tokenExpiration < Date.now()) {
+                /*Clear localStorage and abort rememberMe */
+                dispatch(storageLogout());
+                return;
+            }
+
             dispatch(rememberState());
             dispatch(rememberMe());
         }
