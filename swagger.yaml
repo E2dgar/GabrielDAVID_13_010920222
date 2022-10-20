@@ -112,7 +112,7 @@ paths:
                     description: Invalid Fields
                 '500':
                     description: Internal Server Error
-    /user/transactions:
+    /user/{userId}/transactions:
         get:
             security:
                 - Bearer: []
@@ -128,8 +128,13 @@ paths:
                   required: true
                 - in: query
                   type: string
-                  name: CurrentMonth
-                  description: Current month transactions
+                  name: CurrentMonthCurrentYear
+                  description: Current month of current year transactions
+                  required: true
+                - in: path
+                  type: integer
+                  name: userId
+                  description: Numeric ID of user
                   required: true
             produces:
                 - application/json
@@ -144,7 +149,7 @@ paths:
                     description: Ressource not found
                 '500':
                     description: Internal Server Error
-    /user/transactions/{id}:
+    /user/{userId}/transactions/{transactionId}:
         get:
             security:
                 - Bearer: []
@@ -160,9 +165,15 @@ paths:
                   required: true
                 - in: path
                   type: integer
-                  name: id
+                  name: userId
+                  description: Numeric ID of user
+                  required: true
+                - in: path
+                  type: integer
+                  name: transactionId
                   description: Numeric ID of the transaction to get
                   required: true
+
             produces:
                 - application/json
             responses:
@@ -191,7 +202,12 @@ paths:
                   required: true
                 - in: path
                   type: integer
-                  name: id
+                  name: userId
+                  description: Numeric ID of user
+                  required: true
+                - in: path
+                  type: integer
+                  name: transactionId
                   description: Numeric ID of the transaction to edit
                   required: true
                 - in: body
