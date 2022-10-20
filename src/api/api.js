@@ -10,7 +10,7 @@ export const injectStore = (_store) => {
  * Interceptors for set headers authorization if token exist
  */
 axios.interceptors.request.use((config) => {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(store.getState().auth.token);
     config.headers.authorization = token ? `Bearer ${token}` : 'Bazic';
     return config;
 });

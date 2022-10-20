@@ -4,7 +4,8 @@ import { post } from '../../api/http';
 
 const initialState = {
     status: 'idle',
-    error: null
+    error: null,
+    token: null
 };
 
 /*Async Thunk for login*/
@@ -20,11 +21,13 @@ const authSlice = createSlice({
         logout: (state) => {
             state.status = 'idle';
             state.error = null;
+            state.token = null;
         },
         /*Set auth ok when remember */
         rememberMe: (state) => {
             state.status = 'succeeded';
             state.error = null;
+            state.token = localStorage.getItem('token');
         }
     },
     extraReducers(builder) {
@@ -38,7 +41,9 @@ const authSlice = createSlice({
                     'token',
                     JSON.stringify(action.payload.body.token)
                 );
+                state.token = JSON.stringify(action.payload.body.token);
                 state.status = 'succeeded';
+                state.error = null;
             })
             .addCase(login.rejected, (state, action) => {
                 state.status = 'failed';

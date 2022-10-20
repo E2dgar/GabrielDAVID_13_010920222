@@ -42,7 +42,7 @@ const App = () => {
             dispatch(rememberState());
             dispatch(rememberMe());
         }
-    });
+    }, [token, dispatch]);
 
     return (
         <div className="App">
