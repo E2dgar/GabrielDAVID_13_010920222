@@ -2,7 +2,7 @@ import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
 import Profil from './pages/profil';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/privateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
